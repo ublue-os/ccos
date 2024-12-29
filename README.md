@@ -19,9 +19,9 @@ RUN bootc container lint
 This is expected to be:
 
 - a CentOS based alternative to Fedora CoreOS (FCOS)
-- initially not focussed on installation since FCOS ignition install can be done and rebased to CCOS
-- the foundation for a CentOS based [uCore](https://projectucore.io)
 - ***only*** make the minimal changes required to create a CentOS bootc image which closely matches Fedora CoreOS
+- the foundation for a CentOS based [uCore](https://projectucore.io)
+- initially not focussed on installation since FCOS ignition install can be done and rebased to CCOS
 
 
 ## Goals
