@@ -8,9 +8,9 @@ mkdir -m 0700 -p /var/roothome
 ln -sf /run /var/run
 
 #dnf config-manager --set-enabled crb
-#dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+#dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 
-# add some packages present in Fedora CoreOS but not AlmaLinux bootc
+# add some packages present in Fedora CoreOS but not CentOS bootc
 dnf -y install --setopt=install_weak_deps=False \
   NetworkManager-team \
   afterburn \
@@ -32,13 +32,9 @@ dnf -y install --setopt=install_weak_deps=False \
   ssh-key-dir \
   wireguard-tools
 
-# remove some packages present in AlmaLinux bootc but not Fedora CoreOS
+# remove some packages present in CentOS bootc but not Fedora CoreOS
 dnf -y remove \
   gssproxy \
-  libdnf-plugin-subscription-manager \
   nfs-utils \
-  python3-subscription-manager-rhsm \
   quota \
-  quota-nls \
-  subscription-manager \
-  subscription-manager-rhsm-certificates
+  quota-nls
