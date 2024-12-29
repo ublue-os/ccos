@@ -1,5 +1,5 @@
 repo_organization := "bsherman"
-image_name := "almacoreos"
+image_name := "centcoreos"
 iso_builder_image := "ghcr.io/jasonn3/build-container-installer:v1.2.3"
 
 [private]
@@ -63,17 +63,17 @@ sudoif command *args:
     }
     sudoif {{ command }} {{ args }}
 
-build almalinux_version="9" tag="latest":
+build centos_version="stream9" tag="latest":
     #!/usr/bin/env bash
     tag={{ tag }}
     image_name={{ image_name }}
-    almalinux_version={{ almalinux_version }}
+    centos_version={{ centos_version }}
 
     # Get Version
-    ver="${tag}-${almalinux_version}.$(date +%Y%m%d)"
+    ver="${tag}-${centos_version}.$(date +%Y%m%d)"
 
     BUILD_ARGS=()
-    BUILD_ARGS+=("--build-arg" "MAJOR_VERSION=${almalinux_version}")
+    BUILD_ARGS+=("--build-arg" "MAJOR_VERSION=${centos_version}")
     # BUILD_ARGS+=("--build-arg" "IMAGE_NAME=${image_name}")
     # BUILD_ARGS+=("--build-arg" "IMAGE_VENDOR=${repo_organization}")
     if [[ -z "$(git status -s)" ]]; then
@@ -86,7 +86,7 @@ build almalinux_version="9" tag="latest":
     # LABELS+=("--label" "ostree.linux=${kernel_release}")
     #LABELS+=("--label" "io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/bluefin/bluefin/README.md")
     #LABELS+=("--label" "io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4")
-    LABELS+=("--label" "org.opencontainers.image.description=AlmaLinux CoreOS style images")
+    LABELS+=("--label" "org.opencontainers.image.description=CentOS-based CoreOS style images")
 
    
     echo "${image_name}:${tag}"
@@ -133,7 +133,7 @@ run-vm rebuild="0" type="raw" ram="6GiB":
   [ "{{ rebuild }}" -eq 1 ] && echo "Rebuilding the ISO" && just build-vm {{ rebuild }} {{ type }}
 
   systemd-vmspawn \
-    -M "almacoreos" \
+    -M "centcoreos" \
     --console=gui \
     --cpus=2 \
     --ram=$(echo 6G| /usr/bin/numfmt --from=iec) \
