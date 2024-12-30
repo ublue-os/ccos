@@ -1,12 +1,12 @@
 # CentOS CoreOS (CCOS)
 
 
-CentOS Stream-based image with packages and overlays from CoreOS preinstalled.
+CentOS Stream-based bootc image with packages and overlays from CoreOS preinstalled.
 
 How this is expected to be consumed:
 
 ```Containerfile
-FROM ghcr.io/bsherman/centoscoreos:stream9 # (or whatever tag you want)
+FROM ghcr.io/ublue-os/ccos:stream9 # (or whatever tag you want)
 RUN dnf -y install htop fastfetch
 
 $your_hopes_and_dreams_go_here.
