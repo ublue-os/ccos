@@ -1,5 +1,5 @@
 repo_organization := "bsherman"
-image_name := "centcoreos"
+image_name := "centoscoreos"
 iso_builder_image := "ghcr.io/jasonn3/build-container-installer:v1.2.3"
 
 [private]
@@ -133,7 +133,7 @@ run-vm rebuild="0" type="raw" ram="6GiB":
   [ "{{ rebuild }}" -eq 1 ] && echo "Rebuilding the ISO" && just build-vm {{ rebuild }} {{ type }}
 
   systemd-vmspawn \
-    -M "centcoreos" \
+    -M "centoscoreos" \
     --console=gui \
     --cpus=2 \
     --ram=$(echo 6G| /usr/bin/numfmt --from=iec) \

@@ -6,7 +6,7 @@ CentOS Stream-based image with packages and overlays from CoreOS preinstalled.
 How this is expected to be consumed:
 
 ```Containerfile
-FROM ghcr.io/bsherman/centcoreos:stream9 # (or whatever tag you want)
+FROM ghcr.io/bsherman/centoscoreos:stream9 # (or whatever tag you want)
 RUN dnf -y install htop fastfetch
 
 $your_hopes_and_dreams_go_here.
