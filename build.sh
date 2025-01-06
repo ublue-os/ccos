@@ -21,6 +21,7 @@ dnf -y install --setopt=install_weak_deps=False \
   clevis-pin-tpm2 \
   coreos-installer \
   coreos-installer-bootinfra \
+  firewalld \
   git-core \
   hwdata \
   ignition \
