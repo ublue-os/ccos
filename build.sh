@@ -70,3 +70,6 @@ for od in $(find * -maxdepth 0 -type d); do
   fi
   popd
 done
+
+# enable systemd-resolved for proper name resolution
+systemctl enable systemd-resolved.service
