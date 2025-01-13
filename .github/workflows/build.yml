@@ -48,6 +48,8 @@ jobs:
       - name: Check Just Syntax
         shell: bash
         run: |
+          set -x
+          which just
           just check
 
       - name: Maximize build space
@@ -101,6 +103,8 @@ jobs:
         id: build-image
         shell: bash
         run: |
+          set -x
+          which just
           just=$(which just)
           sudo $just build "${IMAGE_NAME}" "${DEFAULT_TAG}"
 
