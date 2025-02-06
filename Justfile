@@ -2,7 +2,7 @@ export repo_organization := env("GITHUB_REPOSITORY_OWNER", "ublue-os")
 export image_name := env("IMAGE_NAME", "ccos")
 export centos_version := env("CENTOS_VERSION", "9")
 export scos_image := env("SCOS_IMAGE", "quay.io/okd/centos-stream-coreos")
-export scos_tag:= env("SCOS_TAG", "4.18-x86_64")
+export scos_tag := env("SCOS_TAG", "4.18-x86_64")
 export default_tag := env("DEFAULT_TAG", "latest")
 
 # work around issue with upstream image builder,
