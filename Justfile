@@ -1,6 +1,8 @@
 export repo_organization := env("GITHUB_REPOSITORY_OWNER", "ublue-os")
 export image_name := env("IMAGE_NAME", "ccos")
-export centos_version := env("CENTOS_VERSION", "stream9")
+export centos_version := env("CENTOS_VERSION", "9")
+export scos_image := env("SCOS_IMAGE", "quay.io/okd/centos-stream-coreos")
+export scos_tag:= env("SCOS_TAG", "4.18-x86_64")
 export default_tag := env("DEFAULT_TAG", "latest")
 
 # work around issue with upstream image builder,
@@ -81,7 +83,8 @@ build $target_image=image_name $tag=default_tag:
     ver="${tag}-${centos_version}.$(date +%Y%m%d)"
 
     BUILD_ARGS=()
-    BUILD_ARGS+=("--build-arg" "MAJOR_VERSION=${centos_version}")
+    BUILD_ARGS+=("--build-arg" "FROM_IMG=${scos_image}-${centos_version}")
+    BUILD_ARGS+=("--build-arg" "FROM_TAG=${scos_tag}")
     # BUILD_ARGS+=("--build-arg" "IMAGE_NAME=${image_name}")
     # BUILD_ARGS+=("--build-arg" "IMAGE_VENDOR=${repo_organization}")
     # if [[ -z "$(git status -s)" ]]; then
@@ -94,7 +97,7 @@ build $target_image=image_name $tag=default_tag:
     # LABELS+=("--label" "ostree.linux=${kernel_release}")
     LABELS+=("--label" "io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/ccos/main/README.md")
     LABELS+=("--label" "io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4")
-    LABELS+=("--label" "org.opencontainers.image.description=CentOS-based CoreOS-style bootc images")
+    LABELS+=("--label" "org.opencontainers.image.description=CentOS Stream CoreOS-based bootc images")
 
     podman build \
         "${BUILD_ARGS[@]}" \

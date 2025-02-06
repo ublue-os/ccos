@@ -1,6 +1,7 @@
-ARG MAJOR_VERSION="${MAJOR_VERSION:-stream9}"
+ARG FROM_IMG="${FROM_IMG:-quay.io/okd/centos-stream-coreos-9}"
+ARG FROM_TAG="${FROM_TAG:-4.18-x86_64}"
 
-FROM quay.io/centos-bootc/centos-bootc:$MAJOR_VERSION
+FROM ${FROM_IMG}:${FROM_TAG}
 
 # Install/remove packages to make an image with resembles Fedora CoreOS
 COPY build.sh /tmp/build.sh
