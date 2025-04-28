@@ -107,7 +107,7 @@ jobs:
       # Reprocess raw-img using rechunker which will delete it
       - name: Run Rechunker
         id: rechunk
-        uses: hhd-dev/rechunk@341e1298e827bc60cfe19d71539ca42d08c89cfe # v1.1.3
+        uses: hhd-dev/rechunk@ca77507401f8700bb0b25ebecbbf980a078cd180 # v1.2.2
         with:
           rechunk: 'ghcr.io/hhd-dev/rechunk:v1.0.1'
           ref: "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
