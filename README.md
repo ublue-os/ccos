@@ -1,5 +1,6 @@
 # CentOS CoreOS (CCOS)
 
+## This project is discontinued. Our alternative effort https://github.com/ublue-os/server
 
 CentOS Stream-based bootc image with packages and overlays from CoreOS preinstalled.
 
